@@ -4,31 +4,65 @@
             <div>ID: {{category.code}}</div>
             <div>{{category.name}}</div>
             <div>
-                <button class="btn btn-primary">Add Sub Category</button>
-                <button class="btn btn-warning" type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal1">Edit Category</button>
+                <button class="btn btn-primary" (click)="openAddSubCategoryModal(category.code)">Add Sub Category</button>
+                <button class="btn btn-warning" type="button" class="btn btn-warning" (click)="editCategory(category.code, category.name)">Edit Category</button>
                 <button class="btn btn-danger" (click)="deleteCategory(category.code)">Delete Category</button>
             </div>
         </div>
-        <app-category-tree *ngIf="category.children!=undefined" [data]="category.children"></app-category-tree>
-    </div>
-</div>
-<!-- Edit Category Modal -->
-<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+        <div *ngIf="modalVisible" class="modall_container">
+            <div class="modall" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit category</h5>
+                            <button type="button" class="close" (click)="closeModal()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="product_name">Category name:</label>
+                                    <input name="newSubCategoryName" [(ngModel)]="newSubCategoryName" type="text" class="form-control" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+                            <button type="button" class="btn btn-primary" (click)="saveChanges()">Save changes</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div *ngIf="addSubCategoryModalVisible" class="modall_container">
+                <div class="modall" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add subcategory</h5>
+                                <button type="button" class="close" (click)="saveSubcategoryChanges()">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="product_name">Subcategory name:</label>
+                                        <input name="addNewSubcategoryModal" [(ngModel)]="addNewSubcategoryModal" type="text" class="form-control" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" (click)="closeAddSubcategoryModal()">Close</button>
+                                <button type="button" class="btn btn-primary" (click)="saveSubcategoryChanges()">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <app-category-tree *ngIf="category.children!=undefined" [data]="category.children"></app-category-tree>
     </div>
 </div>

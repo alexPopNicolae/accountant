@@ -80,4 +80,45 @@ export class CategoriesServices {
         return filter;
         
     }
+    public editCategory(code, newName) {
+        this.findCategoryAndUpdate(code, this.categories, newName);
+    }
+
+    private findCategoryAndUpdate(code, children, newName) {
+        children.forEach((element)=> {
+            if(element.code==code) {
+                element.name = newName;
+            }
+            if(element.children) {
+                this.findCategoryAndUpdate(code, element.children, newName);
+            }
+        });
+    }
+
+    public saveSubCategory(code, subCategoryName) {
+        this.findCategoryAndAddSubcategory(code, this.categories, subCategoryName);
+    }
+
+    private findCategoryAndAddSubcategory(code, children, subCategoryName) {
+        const uniq = new Date();
+        const subCategory = {
+            code:uniq.getTime(),
+            name:subCategoryName
+        };
+        children.forEach((element)=> {
+            if(element.code == code) {
+                if(element.children) {
+                    element.children.unshift(subCategory);
+                } else {
+                    element.children = [];
+                    element.children.unshift(subCategory);
+                }
+            } else {
+                if(element.children) {
+                    this.findCategoryAndAddSubcategory(code, element.children, subCategoryName);
+                }
+            }
+            
+        })
+    }
 }
