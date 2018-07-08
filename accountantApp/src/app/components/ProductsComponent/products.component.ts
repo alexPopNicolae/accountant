@@ -17,6 +17,7 @@ export class ProductsComponent  implements OnInit {
     public updateProductName;
     public selectedUpdatedProductCategory;
     public updateProductCode;
+    public categoryLabels;
 
     public ngOnInit() {
         this.products = this.productsServices.getProducts();

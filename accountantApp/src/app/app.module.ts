@@ -9,7 +9,8 @@ import { WelcomeComponent } from './components/WelcomeComponent/welcome.componen
 import { ProductsComponent } from './components/ProductsComponent/products.component';
 import { InvoicesComponent } from './components/InvoicesComponent/invoices.component';
 import { ProductsServices } from './services/products.service';
-import { NewProductComponent } from './sharedComponents/NewProductModal/newproduct.component';
+import { CategoriesServices } from './services/categories.service';
+import { CategoryTree } from './sharedComponents/CategoryTree/category-tree.component';
 
 const routes = [
   {path:'', component:WelcomeComponent},
@@ -25,7 +26,7 @@ const routes = [
     WelcomeComponent,
     ProductsComponent,
     InvoicesComponent,
-    NewProductComponent
+    CategoryTree
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,8 @@ const routes = [
     FormsModule
   ],
   providers: [
-    ProductsServices
+    ProductsServices,
+    CategoriesServices
   ],
   bootstrap: [AppComponent]
 })
