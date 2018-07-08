@@ -1,0 +1,89 @@
+<div class="products_container">
+    <h1>Produse</h1>
+    <div class="edit_products_container">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add new</button>
+        <button class="btn btn-danger" (click)="deleteAllSelected()">Delete all selected</button>
+        <button class="btn btn-warning" (click)="clearSelectedFiles()">Clear selected</button>
+    </div>
+    <div class="products_table">
+        <div class="products_header">
+            <div>Nume Produs</div>
+            <div>COD</div>
+            <div>Categoria Produsului</div>
+            <div>Edit Product</div>
+        </div>
+        <div [id]="product.code" [ngClass]="{'selected':product.isSelected}" (click)="handleClickedProduct($event)" *ngFor="let product of products"
+            class="products_row">
+            <div>{{product.name}}</div>
+            <div>{{product.code}}</div>
+            <div>{{product.categoryId}}</div>
+            <div>
+                <button class="btn btn-success" data-toggle="modal" data-target="#editModal" (click)="editProduct(product.code)">Edit</button>
+                <button class="btn btn-danger" (click)="deleteRowProduct(product.code)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add New Product Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Adauga un produs</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="product_name">Nume:</label>
+                        <input name="newProductName" [(ngModel)]="newProductName" type="text" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="category_name">Selecteaza o categorie:</label>
+                        <select (change)="onOptionChange($event.target.value)" class="custom-select" id="inputGroupSelect04">
+                            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addNewProduct()">Save product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Product Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="product_name">Nume:</label>
+                        <input name="updateProductName" [(ngModel)]="updateProductName" type="text" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="category_name">Selecteaza o categorie:</label>
+                        <select (change)="onUpdateOptionChange($event.target.value)" [value]="selectedUpdatedProductCategory" class="custom-select" id="inputGroupSelect04">
+                            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="updateProduct()" data-dismiss="modal">Update Product</button>
+            </div>
+        </div>
+    </div>
+</div>

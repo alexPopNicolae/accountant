@@ -1,0 +1,11 @@
+.welcome-wrapper h1 {
+    text-align: center;
+    margin-top: 75px;
+}
+
+.welcome-wrapper p {
+    text-align: center;
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+}
