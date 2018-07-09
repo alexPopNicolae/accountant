@@ -1,0 +1,15 @@
+<div class="invoices_component">
+    <h1>Facturi</h1>
+    <div class="invoices_container">
+        <div class="table_row invoices_header">
+            <div>Numarul facturii</div>
+            <div>Numele facturii</div>
+            <div>Details</div>
+        </div>
+        <div *ngFor="let invoice of invoices" class="table_row">
+            <div>{{invoice.id}}</div>
+            <div>{{invoice.to}}</div>
+            <div><a [routerLink]="['/invoicedetails', invoice.id]" class="btn btn-danger" style="color:white;">View Details</a></div>
+        </div>
+    </div>
+</div>

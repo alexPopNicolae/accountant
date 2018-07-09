@@ -11,12 +11,15 @@ import { InvoicesComponent } from './components/InvoicesComponent/invoices.compo
 import { ProductsServices } from './services/products.service';
 import { CategoriesServices } from './services/categories.service';
 import { CategoryTree } from './sharedComponents/CategoryTree/category-tree.component';
+import { InvoicesService } from './services/invoices.service';
+import { InvoiceDetails } from './components/InvoiceDetailsComponent/invoice-details.component';
 
 const routes = [
   {path:'', component:WelcomeComponent},
   {path:'products', component:ProductsComponent},
   {path:'categories', component:CategoriesComponent},
-  {path:'invoices', component:InvoicesComponent}
+  {path:'invoices', component:InvoicesComponent},
+  {path:'invoicedetails/:id', component:InvoiceDetails}
 ];
 
 @NgModule({
@@ -26,7 +29,8 @@ const routes = [
     WelcomeComponent,
     ProductsComponent,
     InvoicesComponent,
-    CategoryTree
+    CategoryTree,
+    InvoiceDetails
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,8 @@ const routes = [
   ],
   providers: [
     ProductsServices,
-    CategoriesServices
+    CategoriesServices,
+    InvoicesService
   ],
   bootstrap: [AppComponent]
 })

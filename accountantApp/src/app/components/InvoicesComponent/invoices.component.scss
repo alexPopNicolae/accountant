@@ -1,0 +1,18 @@
+.invoices_component {
+    .table_row {
+        display: flex;
+        border-bottom: 1px solid grey;
+        & > div {
+            height: 50px;
+            line-height: 50px;
+            &:nth-of-type(1) {
+                width: 20%;
+                padding-left: 10px;
+            }
+            &:nth-of-type(2) {
+                width: 80%;
+                padding-left: 10px;
+            }
+    }
+    }
+}
