@@ -1,0 +1,6 @@
+<div class="invoices-list">
+   <div *ngFor="let header of list" (click)="handleClick(header.id)" class="invoice-header">
+       <h3 class="client">{{header.client}}</h3>
+       <div class="client-id">Factura numarul {{header.id}}</div>
+    </div>
+</div>

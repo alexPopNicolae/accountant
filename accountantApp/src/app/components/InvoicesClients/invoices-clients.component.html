@@ -1,0 +1,12 @@
+<div class="invoices-clients">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <app-invoices-list (getDetailsHandler)="getDetails($event)" [list]="invoicesHeader"></app-invoices-list>
+            </div>
+            <div class="col-md-9">
+                <app-invoice-list-details [headerId]="visibleBillId"></app-invoice-list-details>
+            </div>
+        </div>
+    </div>
+</div>

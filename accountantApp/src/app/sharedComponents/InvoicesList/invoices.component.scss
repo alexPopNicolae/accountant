@@ -1,0 +1,15 @@
+.invoices-list {
+    border: 1px solid grey;
+    .invoice-header {
+        padding:10px;
+        border-bottom: 1px solid grey;
+        cursor: pointer;
+        .client, .client-id {
+            pointer-events: none;
+        }
+        &:last-of-type {
+            border: none;
+        }
+
+    }
+}

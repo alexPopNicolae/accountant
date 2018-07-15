@@ -13,13 +13,18 @@ import { CategoriesServices } from './services/categories.service';
 import { CategoryTree } from './sharedComponents/CategoryTree/category-tree.component';
 import { InvoicesService } from './services/invoices.service';
 import { InvoiceDetails } from './components/InvoiceDetailsComponent/invoice-details.component';
+import { InvoicesClientsComponent } from './components/InvoicesClients/invoices-clients.component';
+import { InvoicesList } from './sharedComponents/InvoicesList/invoices.component';
+import { InvoicesClientsService } from './services/invoicesclients.service';
+import { InvoicesListDetalsComponent } from './sharedComponents/InvoicesListDetails/invoices-list-details.component';
 
 const routes = [
   {path:'', component:WelcomeComponent},
   {path:'products', component:ProductsComponent},
   {path:'categories', component:CategoriesComponent},
   {path:'invoices', component:InvoicesComponent},
-  {path:'invoicedetails/:id', component:InvoiceDetails}
+  {path:'invoicedetails/:id', component:InvoiceDetails},
+  {path: 'invoicesclients', component: InvoicesClientsComponent}
 ];
 
 @NgModule({
@@ -30,7 +35,10 @@ const routes = [
     ProductsComponent,
     InvoicesComponent,
     CategoryTree,
-    InvoiceDetails
+    InvoiceDetails,
+    InvoicesClientsComponent,
+    InvoicesList,
+    InvoicesListDetalsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +48,8 @@ const routes = [
   providers: [
     ProductsServices,
     CategoriesServices,
-    InvoicesService
+    InvoicesService,
+    InvoicesClientsService
   ],
   bootstrap: [AppComponent]
 })
