@@ -1,10 +1,10 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light bg-success text-white">
     <div class="navbar-brand text-white">
-        <a [routerLink]="['/']"  class="text-white">AccountantApp</a>
+      <a [routerLink]="['/']" class="text-white">AccountantApp</a>
     </div>
     <div class="nav-item">
-      <a [routerLink]="['/products']"  class="text-white">Produse</a>
+      <a [routerLink]="['/products']" class="text-white">Produse</a>
     </div>
     <div class="nav-item">
       <a [routerLink]="['/categories']" class="text-white">Categorii</a>
@@ -15,10 +15,13 @@
     <div class="nav-item">
       <a [routerLink]="['/invoicesclients']" class="text-white">Facturi clienti</a>
     </div>
+    <div class="nav-item">
+      <a [routerLink]="['/productsclients']" class="text-white">Produse clienti</a>
+    </div>
   </nav>
   <div class="row">
     <div class="col-md-12">
-     <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

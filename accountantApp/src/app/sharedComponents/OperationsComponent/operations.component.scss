@@ -1,0 +1,20 @@
+.operations_component {
+  background: #c7d8ee;
+  position: relative;
+  width: 100%;
+  padding-left: 10px;
+  line-height: 50px;
+  button {
+    margin: 5px;
+  }
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 5px;
+    background: #6495ed;
+  }
+}

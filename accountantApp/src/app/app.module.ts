@@ -17,14 +17,18 @@ import { InvoicesClientsComponent } from './components/InvoicesClients/invoices-
 import { InvoicesList } from './sharedComponents/InvoicesList/invoices.component';
 import { InvoicesClientsService } from './services/invoicesclients.service';
 import { InvoicesListDetalsComponent } from './sharedComponents/InvoicesListDetails/invoices-list-details.component';
+import { ClientProductsComponent } from './components/ClientProducts/client-products.component';
+import { OperationsComponent } from './sharedComponents/OperationsComponent/operations.component';
+import { ProductClient } from './services/productclients.service';
 
 const routes = [
-  {path:'', component:WelcomeComponent},
-  {path:'products', component:ProductsComponent},
-  {path:'categories', component:CategoriesComponent},
-  {path:'invoices', component:InvoicesComponent},
-  {path:'invoicedetails/:id', component:InvoiceDetails},
-  {path: 'invoicesclients', component: InvoicesClientsComponent}
+  { path: '', component: WelcomeComponent },
+  { path: 'products', component: ProductsComponent },
+  { path: 'categories', component: CategoriesComponent },
+  { path: 'invoices', component: InvoicesComponent },
+  { path: 'invoicedetails/:id', component: InvoiceDetails },
+  { path: 'invoicesclients', component: InvoicesClientsComponent },
+  { path: 'productsclients', component: ClientProductsComponent }
 ];
 
 @NgModule({
@@ -38,19 +42,12 @@ const routes = [
     InvoiceDetails,
     InvoicesClientsComponent,
     InvoicesList,
-    InvoicesListDetalsComponent
+    InvoicesListDetalsComponent,
+    ClientProductsComponent,
+    OperationsComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes, {useHash:true}),
-    FormsModule
-  ],
-  providers: [
-    ProductsServices,
-    CategoriesServices,
-    InvoicesService,
-    InvoicesClientsService
-  ],
+  imports: [BrowserModule, RouterModule.forRoot(routes, { useHash: true }), FormsModule],
+  providers: [ProductsServices, CategoriesServices, InvoicesService, InvoicesClientsService, ProductClient],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

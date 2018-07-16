@@ -1,0 +1,22 @@
+.clients_products {
+  .products_grid {
+    .header {
+      display: flex;
+      & > div {
+        width: 33.33%;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        padding: 10px;
+        font-weight: bold;
+      }
+    }
+    .products_row {
+      display: flex;
+      & > div {
+        width: 33.33%;
+        border-bottom: 1px solid grey;
+        padding: 10px;
+      }
+    }
+  }
+}

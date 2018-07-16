@@ -1,0 +1,16 @@
+<div class="clients_products">
+  <h1>Produse clienti</h1>
+  <app-operations (handleAddElement)="handleAddProduct($event)" (handleEditElement)="handleEditProduct($event)" (handleDeleteElement)="handleDeleteProduct($event)"></app-operations>
+  <div class="products_grid">
+    <div class="header">
+      <div>Cod</div>
+      <div>Denumire</div>
+      <div>Categorie</div>
+    </div>
+    <div *ngFor="let product of products" class="products_row">
+      <div>{{product.id}}</div>
+      <div>{{product.denumire}}</div>
+      <div>{{product.categorie}}</div>
+    </div>
+  </div>
+</div>
