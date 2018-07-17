@@ -20,6 +20,7 @@ import { InvoicesListDetalsComponent } from './sharedComponents/InvoicesListDeta
 import { ClientProductsComponent } from './components/ClientProducts/client-products.component';
 import { OperationsComponent } from './sharedComponents/OperationsComponent/operations.component';
 import { ProductClient } from './services/productclients.service';
+import { ProductsModalComponent } from './sharedComponents/ProductsModal/products-modal.component';
 
 const routes = [
   { path: '', component: WelcomeComponent },
@@ -44,7 +45,8 @@ const routes = [
     InvoicesList,
     InvoicesListDetalsComponent,
     ClientProductsComponent,
-    OperationsComponent
+    OperationsComponent,
+    ProductsModalComponent
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes, { useHash: true }), FormsModule],
   providers: [ProductsServices, CategoriesServices, InvoicesService, InvoicesClientsService, ProductClient],

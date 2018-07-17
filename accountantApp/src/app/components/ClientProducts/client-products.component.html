@@ -6,11 +6,67 @@
       <div>Cod</div>
       <div>Denumire</div>
       <div>Categorie</div>
+      <div>Details</div>
     </div>
     <div *ngFor="let product of products" class="products_row">
       <div>{{product.id}}</div>
       <div>{{product.denumire}}</div>
       <div>{{product.categorie}}</div>
+      <div>
+        <button class="btn btn-warning" (click)="handleElementClick(product.id)">Vezi detalii</button>
+      </div>
     </div>
   </div>
+
+  <app-products-modal [title]="'Detalii'" [visible]="modalVisible" (closeModalHandler)="closeProductsModal()">
+    <h5>Detalii produs numarul {{currentOpenedProduct}}</h5>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="denumire">Denumire:</label>
+          <input type="text" [(ngModel)]="productName" class="form-control" id="denumire" aria-describedby="denumireprodus" placeholder="Denumire produs">
+        </div>
+        <div class="form-group">
+          <label for="categorie">Categorie:</label>
+          <input type="text" [(ngModel)]="productCategory" class="form-control" id="categorie" aria-describedby="categorie" placeholder="Categorie produs">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="furnizor">Furnizor:</label>
+          <input type="text" [(ngModel)]="productDeliverer" class="form-control" id="furnizor" aria-describedby="furnizor" placeholder="Furnizor">
+        </div>
+        <div class="form-group">
+          <label for="descriere">Descriere:</label>
+          <input type="text" [(ngModel)]="productDescription" class="form-control" id="descriere" aria-describedby="descriere" placeholder="Descriere">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <app-operations></app-operations>
+      </div>
+      <div class="col-md-12">
+        <div *ngIf="currentNotes!=undefined">
+          <h5>Notes:</h5>
+          <div class="notes_header">
+            <div>UM</div>
+            <div>Implicit</div>
+            <div>Nota</div>
+          </div>
+          <div *ngFor="let note of currentNotes" class="notes_element">
+            <div>{{note.um}}</div>
+            <div>{{note.implicit}}</div>
+            <div>{{note.note}}</div>
+          </div>
+        </div>
+        <div *ngIf="currentNotes==undefined">
+          <h5>Notes:</h5>
+          <p>0 notes for this product!</p>
+        </div>
+      </div>
+    </div>
+  </app-products-modal>
+
+
 </div>

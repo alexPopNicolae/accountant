@@ -7,13 +7,18 @@ import { ProductClient } from '../../services/productclients.service';
   styleUrls: ['./client-products.component.scss']
 })
 export class ClientProductsComponent implements OnInit {
-  constructor(private productClient: ProductClient) {}
+  constructor(private productClientService: ProductClient) {}
   products;
+  modalVisible = false;
+  currentOpenedProduct;
+  productName = 'test1';
+  productCategory = 'category1';
+  productDeliverer = 'oncos';
+  productDescription = 'o simpla descriere';
+  currentNotes;
 
   ngOnInit() {
-    console.log('Astea sunt produsele noastre: ');
-    console.log(this.productClient.getProducts());
-    this.products = this.productClient.getProducts();
+    this.products = this.productClientService.getProducts();
   }
 
   handleAddProduct(e) {
@@ -26,5 +31,24 @@ export class ClientProductsComponent implements OnInit {
 
   handleDeleteProduct(e) {
     console.log(e);
+  }
+
+  handleElementClick(id) {
+    this.modalVisible = true;
+    this.getDataForProduct(id);
+  }
+
+  getDataForProduct(id) {
+    this.currentOpenedProduct = id;
+    const product = this.productClientService.getProduct(id);
+    this.productName = product.denumire;
+    this.productCategory = product.categorie;
+    this.productDeliverer = product.furnizor;
+    this.productDescription = product.descriere;
+    this.currentNotes = product.notes;
+  }
+
+  closeProductsModal() {
+    this.modalVisible = false;
   }
 }
